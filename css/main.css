@@ -1,0 +1,309 @@
+@font-face{
+    font-family: Oregano;
+    src: url('./Oregano-Regular.ttf');
+}
+*{
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    box-sizing: border-box;
+    font-family: Oregano;
+    font-size: 18px;
+}
+html, body{
+    height: 100%;
+}
+#main{
+    height: 100%;
+    display: flex;
+}
+#game{
+    position: relative;
+    width: 1200px;
+    height: 600px;
+    background-image: url('../images/background-1.jpg');
+    background-size: cover;
+    margin: auto;
+    overflow: hidden;
+}
+#logo,
+#counters,
+#buttons,
+#controls{
+    position: absolute;
+    z-index: 99;
+}
+#buttons li img,  #counters li img{
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+#logo{
+    width: 90px;
+    right: 15px;
+    bottom: 15px;
+    z-index: 9;
+}
+
+/* Button control main ship */
+#controls{
+    width: 200px;
+    height: 200px;
+    bottom: 15px;
+    left: 15px;
+    z-index: 99;
+}
+#controls img {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    opacity: 0.5;
+    cursor: pointer;
+}
+#controls img:hover{
+    opacity: 1;
+}
+#left{
+    left: 0;
+    top: calc(50% - 40px);
+}
+#up{
+    top: 0;
+    left: calc(50% - 40px);
+}
+#right{
+    right: 0;
+    top:  calc(50% - 40px);
+}
+#down{
+    bottom: 0;
+    left: calc(50% - 40px);
+}
+/* Button navbar */
+
+#buttons {
+    display: flex;
+    left: 15px;
+    height: 60px;
+}
+#buttons li{
+    margin-right: 15px;
+    display: inline-block;
+    line-height: 60px;
+}
+#buttons li img{
+    vertical-align: middle;
+    opacity: 0.5;
+}
+#button li img:hover{
+    opacity: 1;
+}
+
+#counters {
+    display: flex;
+    right: 15px;
+    height: 60px;
+    color: #fff;
+}
+#counters li{
+    display: inline-block;
+    line-height: 60px;
+}
+#counters li img, #counters li span{
+    vertical-align: middle;
+    margin-left: 15px;
+}
+#counters li meter{
+    margin-left: 15px;
+}
+/* Element */
+
+.main, .friend, .enemy, .fuel, .bullet,.bullet-e, .planet, .ast{
+    position: absolute;
+    background-size: cover;
+}
+.main{
+    width: 120px;
+    height: 55px;
+    top: 300px;
+    background-image: url('../images/main-1.png');
+    animation: ani-main 0.3s linear infinite;
+}
+.planet{
+    animation: ani-rotate 0.8s linear infinite;
+}
+.friend{
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/ship_2.png');
+    animation: ani-ship steps(4) 0.4s infinite;
+}
+.ast{
+    background-image: url('../images/aestroid_brown.png');
+    width: 50px;
+    height: 50px;
+    animation: ani-scale 0.8s linear infinite;
+}
+.enemy{
+    width: 40px;
+    height: 40px;
+    background-image: url('../images/ship_1.png');
+    animation: ani-ship steps(4) 0.4s infinite;
+}
+.bullet{
+    width: 10px;
+    height: 10px;
+    background-image: url('../images/bullet.png');
+}
+.bullet-e{
+    width: 10px;
+    height: 10px;
+    background-image: url('../images/bullet-e.png');    
+}
+.fuel{
+    width: 30px;
+    height: 43px;
+    background-image: url('../images/fuel.png');
+    animation: ani-scale 0.6s linear infinite;
+}
+#game.paused .main,
+#game.paused .planet,
+#game.paused .enemy,
+#game.paused .friend,
+#game.paused .fuel,
+#game.paused .ast{
+    animation-play-state: paused;
+}
+/* Animations */
+@keyframes ani-scale{
+    0%{
+        transform: scale(0.9);
+    }
+    50%{
+        transform: rotate(180deg);
+    }
+    100%{
+        transform: scale(1.5);
+    }
+}
+@keyframes ani-ship{
+    from{
+        background-position: 0px;
+    }
+    to{
+        background-position: 317px;
+    }
+}
+@keyframes ani-rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+@keyframes ani-main{
+    0%{
+        background-image: url('../images/main-1.png');
+    }
+    50%{
+        background-image: url('../images/main-2.png');
+    }
+    100%{
+        background-image: url('../images/main-3.png');
+    }
+}
+
+@keyframes ani-btn{
+    from{
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1);
+    }
+}
+/* Button active */
+button.btn{
+    border: none;
+    outline: none;
+    padding: 8px;
+    background-color: brown;
+    color: #fff;
+    font-family: Oregano;
+    cursor: pointer;
+    border-radius: 5px;
+}
+button:disabled{
+    cursor: not-allowed;
+}
+button.btn:hover{
+    transition: 0.4s all;
+    background-color: #241D4F;
+}
+.btn-active{
+    position: relative;
+    width: 90px;
+    height: 45px;
+}
+.btn-active:after{
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 45px;
+    top: 0;
+    left: 50%;
+    margin-left: -20px;
+    background-color: #fff;
+    border-radius: 100%;
+    opacity: 0.5;
+    transform: scale(0);
+}
+.btn-active:active:after{
+    animation: ani-btn 0.6s linear;
+}
+input#name:focus {
+    outline: none;
+}
+
+input#name {
+    padding: 5px;
+    font-size:  18px;
+    border-radius:  5px;
+    border: none;
+    font-family: Oregano;
+    width:  100%;
+    margin: 0 0 20px 0;
+}
+
+/* Custom modal */
+.ui-dialog.ui-corner-all.ui-widget.ui-widget-content.ui-front {
+    background-color:  rgba(113,114,115,0.4);
+    border: none;
+    color: #fff;
+}
+.ui-dialog-titlebar.ui-corner-all.ui-widget-header.ui-helper-clearfix {
+    background-color:  rgba(0,0,0,0);
+    border: none;
+    color:  #fff;
+}
+button.ui-button.ui-corner-all.ui-widget.ui-button-icon-only.ui-dialog-titlebar-close{
+    display: none;
+}
+div#intro {
+    color: #fff;
+    display: none;
+}
+div#intro h3{
+    text-align: right;
+}
+table{
+    color: #fff;
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #fff;
+    margin-bottom: 15px;
+}
+th, td{
+    padding: 5px;
+    text-align: center;
+}

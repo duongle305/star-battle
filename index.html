@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Star Battle</title>
+    <link rel="stylesheet" href="js/jquery-ui-1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="main">
+        <div id="game" class="paused">
+            <img src="images/logo-01.png" alt="" id="logo">
+            <ul id="buttons">
+                <li><img src="images/off.png" alt="" id="sound"></li>
+                <li><img src="images/pause.png" alt="" id="pause"></li>
+                <li><img src="images/f-up.png" alt="" id="font-up"></li>
+                <li><img src="images/f-down.png" alt="" id="font-down"></li>
+            </ul>
+            <ul id="counters">
+                <li id="score"><img src="images/score.png" alt=""><span>0</span></li>
+                <li id="time"><img src="images/time.png" alt=""><span>00:00</span></li>
+                <li id="fuel"><meter value="20" min="0" max="40"></meter><span>20</span></li>
+            </ul>
+            <div id="controls">
+                <img src="images/left.png" alt="" id="left">
+                <img src="images/up.png" alt="" id="up">
+                <img src="images/right.png" alt="" id="right">
+                <img src="images/down.png" alt="" id="down">
+            </div>
+
+            <span class="main"></span>
+            <div class="dialog" id="intro" title="How to Play Star Battle.">
+                <ul>
+                    <li>1. Move the spaceship using the sensible areas in the screen;</li>
+                    <li>2. The timer present the time lapsed;</li>
+                    <li>3. The fuel counter show the remain fuel;</li>
+                    <li>4. During the flight, the spaceship needs to destroy the asteroids and enemy spaceships that are presented in the space;</li>
+                    <li>5. You can shoot pressing Space Bar;</li>
+                    <li>6. If the spaceship hits a asteroid or another spaceship, you lose 10 points of fuel;</li>
+                    <li>7. Enemy spaceship needs 1 shot to be destroyed, you will get 5 points for each enemy destroyed;</li>
+                    <li>8. Asteroid needs 2 shots to be destroyed, you will get 10 points for each asteroid destroyed;</li>
+                    <li>9. If you destroy a friendly spaceship, you lose 10 points;</li>
+                    <li>10. During the flight, the spaceship needs to collect fuel in the space;</li>
+                    <li>11. You can pause the game clicking in a button pause, or pressing the letter "p";</li>
+                    <li>12. Go beyond all limits;</li>
+                    <h3>Battle in Space with Star Battle Championship...</h3>
+                </ul>
+                <button class="btn btn-active" onclick="startGame();">Start Game</button>
+            </div>
+        </div>
+        <div id="over" class="dialog" title="Game over">
+            <input type="text" id="name" placeholder="Enter your name">
+            <button class="btn btn-active" id="continue" disabled>Continue</button>
+        </div>
+        <div id="ranking" class="dialog" title="Ranking">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Position</th>
+                        <th>Name</th>
+                        <th>Score</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+
+                </tbody>
+            </table>
+            <button class="btn btn-active" onclick="location.reload();">Start Game</button>
+        </div>
+        <audio src="sound/background.mp3" loop id="bg"></audio>
+    </div>
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/jquery-ui-1.12.1/jquery-ui.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
